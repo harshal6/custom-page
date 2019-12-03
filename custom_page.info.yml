@@ -1,0 +1,5 @@
+name: Create Custom Page
+description: Creates a Custom page showing List of Nodes
+package: Custom
+type: module
+core: 8.x

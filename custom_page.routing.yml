@@ -1,0 +1,7 @@
+custom_page.school_list:
+  path: '/admin/school'
+  defaults:
+    _form: '\Drupal\custom_page\Form\SchoolList'
+    _title: 'School List'
+  requirements:
+    _permission: 'access school listing page'
