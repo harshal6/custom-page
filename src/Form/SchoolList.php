@@ -41,6 +41,7 @@ class SchoolList extends FormBase {
 
     public function buildForm(array $form, FormStateInterface $form_state)
     {
+        drupal_set_message('enters2');
         $header = [
             ['data' => 'id'],
             ['data' => 'Title'],
@@ -55,7 +56,8 @@ class SchoolList extends FormBase {
         if ($form_state->getValue('title')) {
             $temp_rows = array();
 
-            foreach ($rows as $row) {
+            foreach ($result as $row) {
+                $row = (array) $row;
                 if (preg_match("/" . $form_state->getValue('title') . "/", $row['title'])) {
                     $rows[] = [(array) $row];
                 }
@@ -84,14 +86,14 @@ class SchoolList extends FormBase {
         $form['form']['filters']['actions']['submit'] = [
             '#type'  => 'submit',
             '#value' => $this->t('Filter'),
-            '#ajax'  => [
-               'callback' => [$this, 'submitForm'],
-                'wrapper'  => 'school-table',
-                'progress' => [
-                  'type' => 'throbber',
-                  'message' => $this->t('Refreshing results....'),
-                ],
-            ]
+//            '#ajax'  => [
+//               'callback' => [$this, 'submitForm'],
+//                'wrapper'  => 'school-table',
+//                'progress' => [
+//                  'type' => 'throbber',
+//                  'message' => $this->t('Refreshing results....'),
+//                ],
+//            ]
         ];
 
         $form['table'] = [
